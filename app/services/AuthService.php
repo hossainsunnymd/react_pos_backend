@@ -19,10 +19,6 @@ class AuthService
         $this->smsService = $smsService;
     }
 
-    public function __invoke()
-    {
-        // You can inject dependencies here if needed
-    }
 
     public function signup(array $data): array
     {
