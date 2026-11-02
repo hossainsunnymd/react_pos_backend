@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Auth;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ResetPasswordRequest extends FormRequest
@@ -24,6 +23,7 @@ class ResetPasswordRequest extends FormRequest
     {
         return [
             'phone' => ['required', 'string', 'exists:users,phone'],
+            'otp' => ['required', 'string'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ];
     }

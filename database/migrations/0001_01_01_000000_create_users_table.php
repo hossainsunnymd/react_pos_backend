@@ -22,10 +22,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('phone')->primary();
-            $table->string('otp');
-            $table->timestamp('expires_at');
+        Schema::create('password_reset_otps', function (Blueprint $table) {
+            $table->id();
+            $table->string('phone')->unique();
+            $table->string('otp')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->timestamps();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
