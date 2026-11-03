@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('customer_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->decimal('total', 15, 2);
+            $table->decimal('discount', 15, 2);
+            $table->decimal('vat', 15, 2);
+            $table->decimal('payable', 15, 2);
             $table->timestamps();
         });
     }
