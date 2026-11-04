@@ -72,7 +72,7 @@ class AuthController extends Controller
     {
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'User profile retrieved successfully',
             'data' => new UserResource($request->user()),
         ], 200);
