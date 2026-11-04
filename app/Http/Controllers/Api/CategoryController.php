@@ -26,7 +26,7 @@ class CategoryController extends Controller
         $categories = $this->categoryService->getAllCategories((int)$perPage, $search);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Categories retrieved successfully',
             'data' => CategoryResource::collection($categories)->response()->getData(true),
         ], 200);
@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $category = $this->categoryService->store($request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Category created successfully',
             'data' => new CategoryResource($category),
         ], 201);
@@ -48,7 +48,7 @@ class CategoryController extends Controller
         $category = $this->categoryService->update($id, $request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Category updated successfully',
             'data' => new CategoryResource($category),
         ], 200);
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     {
         $this->categoryService->delete($category);
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Category deleted successfully',
         ], 200);
     }

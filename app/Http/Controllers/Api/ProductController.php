@@ -26,7 +26,7 @@ class ProductController extends Controller
         $products = $this->productService->getAllProducts((int) $perPage, $search);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Products retrieved successfully',
             'data' => ProductResource::collection($products)->response()->getData(true),
         ], 200);
@@ -37,7 +37,7 @@ class ProductController extends Controller
         $product = $this->productService->store($request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Product created successfully',
             'data' => new ProductResource($product),
         ], 201);
@@ -48,7 +48,7 @@ class ProductController extends Controller
         $product = $this->productService->update($product, $request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Product updated successfully',
             'data' => new ProductResource($product),
         ], 200);
@@ -60,7 +60,7 @@ class ProductController extends Controller
         $this->productService->delete($product);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Product deleted successfully',
         ], 200);
     }

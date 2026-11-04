@@ -25,7 +25,7 @@ class AuthController extends Controller
         $result = $this->authService->signup($request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Signup successful',
             'data' => [
                 'user' => new UserResource($result['user']),
@@ -41,7 +41,7 @@ class AuthController extends Controller
             $result = $this->authService->login($request->validated());
 
             return response()->json([
-                'success' => true,
+                'status' => true,
                 'message' => 'Login successful',
                 'data' => [
                     'user' => new UserResource($result['user']),
@@ -51,7 +51,7 @@ class AuthController extends Controller
 
         } catch (ValidationException $e) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => 'Validation error',
                 'errors' => $e->errors(),
             ], 422);
@@ -63,7 +63,7 @@ class AuthController extends Controller
         $this->authService->logout($request->user());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Logout successful',
         ], 200);
     }

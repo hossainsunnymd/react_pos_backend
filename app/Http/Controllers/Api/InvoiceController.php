@@ -30,12 +30,12 @@ class InvoiceController extends Controller
             $this->invoiceService->createInvoice($request->validated());
 
             return response()->json([
-                'success' => true,
+                'status' => true,
                 'message' => 'Invoice created successfully',
             ], 201);
         } catch (Exception $e) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => $e->getMessage()
             ], 500);
         }

@@ -28,7 +28,7 @@ class UserController extends Controller
         $users=$this->userService->getAllUsers((int)$perPage, $search);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Users retrieved successfully',
             'data' => UserResource::collection($users)->response()->getData(true),
         ], 200);
@@ -40,7 +40,7 @@ class UserController extends Controller
         $user = $this->userService->createUser($request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'User created successfully',
             'data' => new UserResource($user),
         ], 201);
@@ -51,7 +51,7 @@ class UserController extends Controller
         $updatedUser = $this->userService->updateUser($user, $request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'User updated successfully',
             'data' => new UserResource($updatedUser),
         ], 200);
@@ -62,7 +62,7 @@ class UserController extends Controller
         $this->userService->deleteUser($user);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'User deleted successfully',
         ], 200);
 

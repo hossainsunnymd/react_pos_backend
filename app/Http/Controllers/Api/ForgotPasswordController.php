@@ -26,13 +26,13 @@ class ForgotPasswordController extends Controller
             $message = $this->authService->sendResetOtp($request->validated()['phone']);
 
             return response()->json([
-                'success' => true,
+                'status' => true,
                 'message' => $message,
             ], 200);
 
         } catch (Exception $e) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => $e->getMessage(),
             ], 500);
         }
@@ -44,13 +44,13 @@ class ForgotPasswordController extends Controller
             $message = $this->authService->resetWithOtp($request->validated());
 
             return response()->json([
-                'success' => true,
+                'status' => true,
                 'message' => $message,
             ], 200);
 
         } catch (Exception $e) {
             return response()->json([
-                'success' => false,
+                'status' => false,
                 'message' => $e->getMessage(),
             ], 500);
         }

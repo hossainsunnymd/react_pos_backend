@@ -27,7 +27,7 @@ class CustomerController extends Controller
         $customers = $this->customerService->getAllCustomers((int)$perPage, $search);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Customers retrieved successfully',
             'data' => CustomerResource::collection($customers)->response()->getData(true),
         ], 200);
@@ -38,7 +38,7 @@ class CustomerController extends Controller
         $customer = $this->customerService->store($request->all());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Customer created successfully',
             'data' => new CustomerResource($customer),
         ], 201);
@@ -49,7 +49,7 @@ class CustomerController extends Controller
         $customer = $this->customerService->update($customer, $request->validated());
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Customer updated successfully',
             'data' => new CustomerResource($customer),
         ], 200);
@@ -60,7 +60,7 @@ class CustomerController extends Controller
         $this->customerService->delete($customer);
 
         return response()->json([
-            'success' => true,
+            'status' => true,
             'message' => 'Customer deleted successfully',
         ], 200);
     }
