@@ -11,6 +11,7 @@ class ProductService
     public function getAllProducts(int $perPage = 15, ?string $search = null): LengthAwarePaginator
     {
         return Product::query()
+            ->with('category')
             ->when($search, function ($query) use ($search) {
                 $query->where('name', 'like', "%{$search}%")
                     ->orWhereHas('category', function ($query) use ($search) {

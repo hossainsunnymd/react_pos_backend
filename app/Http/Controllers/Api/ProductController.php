@@ -54,6 +54,16 @@ class ProductController extends Controller
         ], 200);
     }
 
+    public function show(Product $product): JsonResponse
+    {
+        $product=$product->load('category');
+        return response()->json([
+            'status' => true,
+            'message' => 'Product retrieved successfully',
+            'data' => new ProductResource($product),
+        ], 200);
+    }
+
 
     public function delete(Product $product): JsonResponse
     {
