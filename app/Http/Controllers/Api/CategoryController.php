@@ -52,9 +52,9 @@ class CategoryController extends Controller
         ], 200);
     }
 
-    public function update(CategoryRequest $request, $id):JsonResponse
+    public function update(CategoryRequest $request, Category $category):JsonResponse
     {
-        $category = $this->categoryService->update($id, $request->validated());
+        $category = $this->categoryService->update($category, $request->validated());
 
         return response()->json([
             'status' => true,
