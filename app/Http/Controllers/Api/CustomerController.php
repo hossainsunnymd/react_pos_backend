@@ -44,6 +44,14 @@ class CustomerController extends Controller
         ], 201);
     }
 
+    public function show(Customer $customer): JsonResponse{
+        return response()->json([
+            'status' => true,
+            'message' => 'Customer retrieved successfully',
+            'data' => new CustomerResource($customer),
+        ], 200);
+    }
+
     public function update(Customer $customer, CustomerRequest $request): JsonResponse
     {
         $customer = $this->customerService->update($customer, $request->validated());

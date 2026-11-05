@@ -43,6 +43,15 @@ class CategoryController extends Controller
         ], 201);
     }
 
+    public function show(Category $category): JsonResponse
+    {
+        return response()->json([
+            'status' => true,
+            'message' => 'Category retrieved successfully',
+            'data' => new CategoryResource($category),
+        ], 200);
+    }
+
     public function update(CategoryRequest $request, $id):JsonResponse
     {
         $category = $this->categoryService->update($id, $request->validated());

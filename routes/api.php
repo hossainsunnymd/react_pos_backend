@@ -24,18 +24,21 @@ Route::middleware('auth:sanctum')->group(function () {
     //users
     Route::get('/users',[UserController::class,'index']);
     Route::post('/users',[UserController::class,'store']);
+    Route::get('/users/{user}',[UserController::class,'show']);
     Route::put('/users/{user}',[UserController::class,'update']);
     Route::delete('/users/{user}',[UserController::class,'delete']);
 
     //customers
     Route::get('/customers',[CustomerController::class,'index']);
     Route::post('/customers',[CustomerController::class,'store']);
+    Route::get('/customers/{customer}',[CustomerController::class,'show']);
     Route::put('/customers/{customer}',[CustomerController::class,'update']);
     Route::delete('/customers/{customer}',[CustomerController::class,'delete']);
 
     //categories
     Route::get('/categories',[CategoryController::class,'index']);
     Route::post('/categories',[CategoryController::class,'store']);
+    Route::get('/categories/{category}',[CategoryController::class,'show']);
     Route::put('/categories/{category}',[CategoryController::class,'update']);
     Route::delete('/categories/{category}',[CategoryController::class,'delete']);
 

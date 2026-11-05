@@ -46,6 +46,15 @@ class UserController extends Controller
         ], 201);
     }
 
+    public function show(User $user): JsonResponse
+    {
+        return response()->json([
+            'status' => true,
+            'message' => 'User retrieved successfully',
+            'data' => new UserResource($user),
+        ], 200);
+    }
+
     public function update(User $user, UserUpdateRequest $request): JsonResponse
     {
         $updatedUser = $this->userService->updateUser($user, $request->validated());
