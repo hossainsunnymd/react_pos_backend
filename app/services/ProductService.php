@@ -27,7 +27,7 @@ class ProductService
         if (isset($data['image'])) {
             $file = $data['image'];
             $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/images', $fileName);
+            $file->storeAs('images', $fileName);
             $data['image'] = $fileName;
         }
 
@@ -38,12 +38,12 @@ class ProductService
     {
         if (isset($data['image'])) {
             if ($product->image) {
-                Storage::delete('public/images/' . $product->image);
+                Storage::delete('images/' . $product->image);
             }
 
             $file = $data['image'];
             $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('public/images', $fileName);
+            $file->storeAs('images', $fileName);
             $data['image'] = $fileName;
         }
 
@@ -55,7 +55,7 @@ class ProductService
     public function delete(Product $product): void
     {
         if ($product->image) {
-            Storage::delete('public/images/' . $product->image);
+            Storage::delete('images/' . $product->image);
         }
 
         $product->delete();
